@@ -79,18 +79,6 @@
         .dot.active {
             background-color: #333;
         }
-
-        .dot1.active {
-            background-color: #333;
-        }
-
-        .dot2.active {
-            background-color: #333;
-        }
-
-        .dot3.active {
-            background-color: #333;
-        }
     </style>
 </head>
 
@@ -104,9 +92,9 @@
         <button class="prev">&#10094;</button>
         <button class="next">&#10095;</button>
         <div class="dots">
-            <span class="dot dot1 active"></span>
-            <span class="dot dot2"></span>
-            <span class="dot dot3"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
     </div>
 
@@ -117,29 +105,48 @@
         const nextBtn = document.querySelector('.next');
         const dots = document.querySelectorAll('.dot');
         let currentIndex = 0;
-        let autoSlide;
+        let autoslide;
+        console.log(images.length);
 
-        
+        function startautoslide() {
+            autoslide = setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                console.log("slide automatically moved");
+                slide();
+                slidedot();
+            }, 1000);
+        }
+
+        function slidedot() {
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            dots[currentIndex].classList.add('active');
+        }
 
         function slide() {
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`
-        }
-        prevBtn.addEventListener('click',()=>{
-            currentIndex = currentIndex - 1;
-            slide();
-        });
-        nextBtn.addEventListener('click',()=>{
-            currentIndex = currentIndex + 1;
-            slide();
-        });
-        function Autoslide(){
-            
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
+        prevBtn.addEventListener('click', () => {
+            clearInterval(autoslide);
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            slide();
+            slidedot();
+            startautoslide();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            clearInterval(autoslide);
+            currentIndex = (currentIndex + 1) % images.length;
+            slide();
+            slidedot();
+            startautoslide();
+        });
 
 
 
-
+        startautoslide();
     </script>
 </body>
 
