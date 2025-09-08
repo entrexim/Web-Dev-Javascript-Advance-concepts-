@@ -8,6 +8,7 @@
     <style>
         .car-div {
             transition: all 0.3s ease-in-out;
+           
         }
         .car-div.hidden {
             display: none;
@@ -78,6 +79,7 @@
                 <p>Year: 2024</p>
                 <p>Price: $70,000</p>
             </div>
+            
             <div class="car-div bg-white p-4 rounded-lg shadow-md">
                 <h2 class="text-xl font-semibold">Hyundai Tucson</h2>
                 <p>Model: Limited</p>
@@ -285,6 +287,7 @@
             </div>
             <div class="car-div bg-white p-4 rounded-lg shadow-md">
                 <h2 class="text-xl font-semibold">Toyota RAV4</h2>
+                <img src="dcjhwecjhewbcjh" alt="Toyata image">
                 <p>Model: TRD Off-Road</p>
                 <p>Year: 2023</p>
                 <p>Price: $38,000</p>
@@ -341,14 +344,14 @@
 
 
            
-
-
+            
+            
             // Reset all divs
             for (let div of carDivs) {
                 div.classList.remove('match');
                 div.classList.remove('hidden');
             }
-
+            
             // Filter and reorder
             if (input) {
                 for (let div of carDivs) {
@@ -360,7 +363,7 @@
                     }
                 }
             }
-
+            
             // Ensure grid layout is maintained
             carList.style.display = 'grid';
         }
