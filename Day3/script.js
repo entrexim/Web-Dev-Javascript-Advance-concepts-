@@ -14,12 +14,13 @@ links.forEach(link => {
 function setActiveLink() {
   links.forEach(link => {
     link.classList.remove('active'); // Clear active
-    const linkPage = link.getAttribute('href').slice(1) + '.html'; // e.g., #contact -> contact.html ()yaad rakhna ise
+    const linkPage = link.getttribute('href').slice(1) + '.html'; // e.g., #contact -> contact.html ()yaad rakhna ise
     if (window.location.pathname.split('/').pop() === linkPage) {
       link.classList.add('active'); // Set active
     }
   });
 }
 
+
 // Run on page load
-setActiveLink();
+setactiveLink();
